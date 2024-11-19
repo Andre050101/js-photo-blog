@@ -18,20 +18,36 @@ body {
     height: 100%;
     display: flex;
     flex-direction: column;
+    font-family: "Edu TAS Beginner", cursive;
+    font-optical-sizing: auto;
+    font-weight: 100;
+    font-style: italic;
+
 }
 
 /* Header */
-.header {
+header {
     background: url(../img/wall.png) no-repeat center center;
     background-size: cover;
     text-align: center;
     padding: 15px 0;
     /* Bilanciato per occupare meno spazio */
     color: black;
+
 }
 
+header h1 {
+    font-family: "Edu TAS Beginner", cursive;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: italic;
+    font-size: 3.5rem;
+}
+
+
+
 /* Main: controlla padding tra header e contenuto */
-.main {
+main {
     background: url(../img/cork.png) no-repeat center center;
     background-size: cover;
     flex-grow: 1;
@@ -70,7 +86,7 @@ body {
 /* Contenuto colorato della card */
 .card-content {
     width: 100%;
-    height: 150px;
+    height: 280px;
     margin-bottom: 10px;
 }
 
@@ -90,3 +106,16 @@ body {
     font-size: 0.9rem;
     color: #333;
 }
+
+.poppins-bold-italic {
+    font-family: "Poppins", serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
+/*.edu-tas-beginner-<uniquifier> {
+    font-family: "Edu TAS Beginner", cursive;
+    font-optical-sizing: auto;
+    font-weight: <weight>;
+    font-style: normal;
+}*/
