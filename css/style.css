@@ -9,3 +9,22 @@
 .debug {
     border: 1px solid red;
 }
+
+header {
+    background-image: url(../img/wall.png);
+}
+
+header h1 {
+    font-family: sans-serif;
+    font-size: 5rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 20px 0;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+main {
+    background-image: url(../img/cork.png);
+    height: 84vh;
+}
