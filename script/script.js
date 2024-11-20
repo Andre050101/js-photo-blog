@@ -52,22 +52,23 @@ function createCard(photo) {
     `;
 }
 
+let currentPhotoIndex = 0;
+let photos = [];
+
 // Funzione per caricare le foto dall'API
 async function loadPhotos() {
   try {
     // Effettua una richiesta GET
     const response = await axios.get(apiURL);
-    const photos = response.data;
+    photos = response.data; // Memorizza le foto per la navigazione
 
     // Genera il markup delle card
     board.innerHTML = photos.map(createCard).join('');
     const cards = document.querySelectorAll('.card');
-    cards.forEach(card => {
-      card.addEventListener('click', (e) => {
-        const imageUrl = e.currentTarget.querySelector('.card-content').style.backgroundImage;
-        const cleanUrl = imageUrl.replace('url(', '').replace(')', '').replace(/"/g, '');
-        overlay.style.display = 'flex';
-        overlayImg.src = cleanUrl;
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        currentPhotoIndex = index; // Salva l'indice della foto cliccata
+        openOverlay(currentPhotoIndex); // Mostra l'overlay con la foto selezionata
       });
     });
   } catch (error) {
@@ -77,20 +78,58 @@ async function loadPhotos() {
   }
 }
 
-/*Gestione overlay:*/
+/* Gestione overlay: */
 const overlay = document.getElementById('overlay');
 const closeOverlayBtn = document.getElementById('close-overlay');
 const overlayImg = document.getElementById('overlay-img');
 
-// Funzione per chiudere l'overlay quando si clicca sul bottone di chiusura
-closeOverlayBtn.addEventListener('click', () => {
+// Pulsanti per la navigazione
+const prevButton = document.getElementById('prev-photo');
+const nextButton = document.getElementById('next-photo');
+
+// Funzione per mostrare l'overlay con la foto corrente
+function openOverlay(index) {
+  const photo = photos[index];
+  overlay.style.display = 'flex';
+  overlayImg.src = photo.url;
+}
+
+// Funzione per chiudere l'overlay
+function closeOverlay() {
   overlay.style.display = 'none';
+}
+
+// Navigazione tra le foto
+function showNextPhoto() {
+  currentPhotoIndex = (currentPhotoIndex + 1) % photos.length; // Vai alla foto successiva
+  openOverlay(currentPhotoIndex);
+}
+
+function showPrevPhoto() {
+  currentPhotoIndex =
+    (currentPhotoIndex - 1 + photos.length) % photos.length; // Vai alla foto precedente
+  openOverlay(currentPhotoIndex);
+}
+
+// Event listener per chiudere l'overlay
+closeOverlayBtn.addEventListener('click', closeOverlay);
+
+// Event listener per navigazione
+prevButton.addEventListener('click', (e) => {
+  e.stopPropagation(); // Evita che il click chiuda l'overlay
+  showPrevPhoto();
 });
 
-// Funzione per chiudere l'overlay quando si clicca su qualsiasi punto dello schermo eccetto la foto
-overlay.addEventListener('click', () => {
-  overlay.style.display = 'none';
-})
+nextButton.addEventListener('click', (e) => {
+  e.stopPropagation(); // Evita che il click chiuda l'overlay
+  showNextPhoto();
+});
+
+// Event listener per chiudere l'overlay cliccando fuori dall'immagine
+overlay.addEventListener('click', closeOverlay);
+
+// Evita che il click sull'immagine non chiuda l'overlay
+overlayImg.addEventListener('click', (e) => e.stopPropagation());
 
 // Avvia il caricamento delle foto al caricamento della pagina
 loadPhotos();

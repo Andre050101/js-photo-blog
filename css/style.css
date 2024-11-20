@@ -163,6 +163,35 @@ main {
     color: white;
 }
 
+.overlay-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: white;
+    color: black;
+    border: none;
+    font-size: 2rem;
+    padding: 20px 30px;
+    cursor: pointer;
+    z-index: 10000;
+    border-radius: 10px;
+
+}
+
+.overlay-nav:hover {
+    background-color: black;
+    color: white;
+}
+
+/* Posizionamento pulsanti */
+#prev-photo {
+    left: -6%;
+}
+
+#next-photo {
+    right: -6%;
+}
+
 /* Media queries per rendere la pagina responsive */
 @media screen and (max-width: 768px) {
     .board {
