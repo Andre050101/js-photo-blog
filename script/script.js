@@ -26,7 +26,7 @@ function createCard(photo) {
         <div class="card">
             <img src="./img/pin.svg" alt="Pin" class="pin">
             <div class="card-content" 
-                style="background-image: url('${photo.thumbnailUrl}');">
+                style="background-image: url('${photo.url}');">
             </div>
             <p>${photo.title}</p>
         </div>
