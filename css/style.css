@@ -89,6 +89,7 @@ main {
     opacity: 1;
 }
 
+/*Metodo per far sparire pin con hover*/
 .card:hover .pin {
     opacity: 0;
 }
@@ -98,4 +99,23 @@ main {
     margin: 0;
     font-size: 0.9rem;
     color: #333;
+}
+
+/*Media queries per rendere la pagina responsive*/
+@media screen and (max-width: 768px) {
+    .board {
+        /*2 colonne*/
+        grid-template-columns: repeat(2, 1fr);
+        /*Diminuzione gap tra card*/
+        gap: 15px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .board {
+        /*1 colonna*/
+        grid-template-columns: 1fr;
+        /*Diminuzione gap tra card*/
+        gap: 10px;
+    }
 }
