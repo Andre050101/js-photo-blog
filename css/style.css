@@ -1,79 +1,57 @@
-/*Reset*/
+/* Reset di base per uniformità */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/*Debug*/
-.debug {
-    border: 1px solid red;
-}
-
-/* Reset margini/padding di base per evitare spazi indesiderati */
+/* Corpo del documento */
 html,
 body {
-    margin: 0;
-    padding: 0;
     height: 100%;
+    font-family: "Edu TAS Beginner", cursive;
     display: flex;
     flex-direction: column;
-    font-family: "Edu TAS Beginner", cursive;
-    font-optical-sizing: auto;
-    font-weight: 100;
-    font-style: italic;
-
 }
 
-/* Header */
+/* Header con sfondo personalizzato */
 header {
     background: url(../img/wall.png) no-repeat center center;
     background-size: cover;
     text-align: center;
     padding: 15px 0;
-    /* Bilanciato per occupare meno spazio */
     color: black;
-
 }
 
 header h1 {
-    font-family: "Edu TAS Beginner", cursive;
-    font-optical-sizing: auto;
     font-weight: 700;
-    font-style: italic;
     font-size: 3.5rem;
+    font-style: italic;
 }
 
-
-
-/* Main: controlla padding tra header e contenuto */
+/* Area principale */
 main {
+    flex-grow: 1;
+    /* Occupa lo spazio rimanente */
     background: url(../img/cork.png) no-repeat center center;
     background-size: cover;
-    flex-grow: 1;
-    /* Occupa tutto lo spazio disponibile */
-    padding: 50px 20px;
-    /* Ridotto per diminuire spazio verticale */
     display: flex;
     justify-content: center;
     align-items: flex-start;
-    /* Allinea le card in alto rispetto al main */
+    padding: 20px;
 }
 
-/* Griglia delle card */
+/* Griglia per le card */
 .board {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    /* Griglia a 3 colonne */
+    /* Tre colonne */
     gap: 20px;
-    /* Spazio tra le card */
     max-width: 1200px;
     width: 100%;
-    margin-top: 0;
-    /* Rimuove spazio extra sopra la griglia */
 }
 
-/* Card */
+/* Stile delle card */
 .card {
     background: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -83,14 +61,15 @@ main {
     height: 350px;
 }
 
-/* Contenuto colorato della card */
+/* Contenuto della card */
 .card-content {
-    width: 100%;
     height: 280px;
     margin-bottom: 10px;
+    background-size: cover;
+    background-position: center;
 }
 
-/* Pin rosso */
+/* Icona Pin */
 .pin {
     width: 30px;
     height: 30px;
@@ -100,15 +79,9 @@ main {
     transform: translateX(-50%);
 }
 
-/* Testo delle card */
+/* Testo della card */
 .card p {
     margin: 0;
     font-size: 0.9rem;
     color: #333;
-}
-
-.poppins-bold-italic {
-    font-family: "Poppins", serif;
-    font-weight: 700;
-    font-style: italic;
 }

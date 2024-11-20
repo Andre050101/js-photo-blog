@@ -4,61 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--Font Awesome-->
+
+    <!-- Font Awesome (per le icone) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.0/css/all.min.css"
         integrity="sha512-9xKTRVabjVeZmc+GUW8GgSmcREDunMM+Dt/GrzchfN8tkwHizc5RP4Ok/MXFFy5rIjJjzhndFScTceq5e6GvVQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <!--Axios-->
-    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
-    <!--Font-->
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&family=Faculty+Glyphic&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Edu+TAS+Beginner:wght@400..700&family=Poppins:ital,wght@0,400;0,700;1,400;1,700&display=swap"
         rel="stylesheet">
-    <!--File script.js-->
-    <script src="./script/script.js" type="module"></script>
-    <!--File style.css-->
+
+    <!-- Foglio di stile -->
     <link rel="stylesheet" href="./css/style.css">
+
+    <!-- Axios per le richieste HTTP -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+
+    <!-- Script principale -->
+    <script src="./script/script.js" type="module" defer></script>
+
     <title>JS Photo Blog</title>
 </head>
 
 <body>
+    <!-- Header con titolo -->
     <header class="header">
         <h1>ESTATE '24</h1>
     </header>
+
+    <!-- Contenuto principale -->
     <main class="main">
-        <div class="board">
-            <div class="card">
-                <img src="./img/pin.svg" alt="Pin" class="pin">
-                <div class="card-content"></div>
-                <p>Accusamus Beatae Ad Facilis Cum Similique Qui Sunt</p>
-            </div>
-            <div class="card">
-                <img src="./img/pin.svg" alt="Pin" class="pin">
-                <div class="card-content"></div>
-                <p>Reprehenderit Est Deserunt Velit Ipsam</p>
-            </div>
-            <div class="card">
-                <img src="./img/pin.svg" alt="Pin" class="pin">
-                <div class="card-content"></div>
-                <p>Officia Porro Iure Quia Iusto Qui Ipsa Ut Modi</p>
-            </div>
-            <div class="card">
-                <img src="./img/pin.svg" alt="Pin" class="pin">
-                <div class="card-content"></div>
-                <p>Culpa Odio Esse Rerum Omnis Laboriosam Voluptate Repudiandae</p>
-            </div>
-            <div class="card">
-                <img src="./img/pin.svg" alt="Pin" class="pin">
-                <div class="card-content"></div>
-                <p>Natus Nisi Omnis Corporis Facere Molestiae Rerum In</p>
-            </div>
-            <div class="card">
-                <img src="./img/pin.svg" alt="Pin" class="pin">
-                <div class="card-content"></div>
-                <p>Accusamus Ea Aliquid Et Amet Sequi Nemo</p>
-            </div>
-        </div>
+        <!-- Contenitore dinamico per le card -->
+        <div class="board"></div>
     </main>
 </body>
+
+</html>
