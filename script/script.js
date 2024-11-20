@@ -87,5 +87,10 @@ closeOverlayBtn.addEventListener('click', () => {
   overlay.style.display = 'none';
 });
 
+// Funzione per chiudere l'overlay quando si clicca su qualsiasi punto dello schermo eccetto la foto
+overlay.addEventListener('click', () => {
+  overlay.style.display = 'none';
+})
+
 // Avvia il caricamento delle foto al caricamento della pagina
 loadPhotos();

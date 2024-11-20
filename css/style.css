@@ -5,6 +5,11 @@
     box-sizing: border-box;
 }
 
+/*Variabili*/
+:root {
+    --close-pic-backg: #861c1c;
+}
+
 /* Corpo del documento */
 html,
 body {
@@ -66,6 +71,7 @@ main {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
 
 /* Hover per effetto di rotazione e ingrandimento */
@@ -139,6 +145,7 @@ main {
     justify-content: center;
     align-items: center;
     z-index: 9999;
+    cursor: pointer;
 }
 
 /* Contenitore del contenuto dell'overlay*/
@@ -168,9 +175,11 @@ main {
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
+    width: 8%;
+    aspect-ratio: 1;
 }
 
 .close-overlay:hover {
-    background-color: red;
+    background-color: var(--close-pic-backg);
     color: white;
 }
