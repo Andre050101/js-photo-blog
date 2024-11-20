@@ -59,6 +59,14 @@ main {
     text-align: center;
     position: relative;
     height: 350px;
+    transition: transform 0.3s ease;
+    position: relative;
+}
+
+.card:hover {
+    transform: rotate(10deg) scale(1.1);
+    transition: transform 0.3s ease;
+    z-index: 9000;
 }
 
 /* Contenuto della card */
@@ -77,6 +85,12 @@ main {
     top: -15px;
     left: 50%;
     transform: translateX(-50%);
+    transition: opacity 0.3 ease;
+    opacity: 1;
+}
+
+.card:hover .pin {
+    opacity: 0;
 }
 
 /* Testo della card */
