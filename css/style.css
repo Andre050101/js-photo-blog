@@ -112,27 +112,6 @@ main {
     color: #333;
 }
 
-/* Media queries per rendere la pagina responsive */
-@media screen and (max-width: 768px) {
-    .board {
-        grid-template-columns: repeat(2, 1fr);
-        /* 2 colonne per schermi più piccoli */
-        gap: 15px;
-    }
-
-    header h1 {
-        font-size: 2.5rem;
-    }
-}
-
-@media screen and (max-width: 576px) {
-    .board {
-        grid-template-columns: 1fr;
-        /* 1 colonna per schermi molto piccoli */
-        gap: 10px;
-    }
-}
-
 /*Overlay che copre pagina intera*/
 .overlay {
     position: fixed;
@@ -182,4 +161,30 @@ main {
 .close-overlay:hover {
     background-color: var(--close-pic-backg);
     color: white;
+}
+
+/* Media queries per rendere la pagina responsive */
+@media screen and (max-width: 768px) {
+    .board {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colonne per schermi più piccoli */
+        gap: 15px;
+    }
+
+    header h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .board {
+        grid-template-columns: 1fr;
+        /* 1 colonna per schermi molto piccoli */
+        gap: 10px;
+    }
+
+    .close-overlay {
+        font-size: 12px;
+        width: 6%;
+    }
 }
