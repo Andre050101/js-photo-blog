@@ -38,12 +38,12 @@
     <!-- Contenuto principale -->
     <main>
         <aside>
-            <div class="addBtnWrapper">
+            <div class="addBtnWrapper2">
                 <button id="btnBase" class="addBtn2">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
             </div>
             <div class="deleteBtnWrapper">
                 <button id="deleteAllBtn" class="deleteAllBtn">Elimina Tutto<i
-                        class="fa-solid fa-image addBtnImg"></i></button>
+                        class="fa-solid fa-trash addBtnImg"></i></button>
             </div>
         </aside>
         <!-- Contenitore dinamico per le card -->
@@ -51,13 +51,23 @@
     </main>
     <div id="overlay" class="overlay">
         <div class="overlay-content">
-            <button id="prev-photo" class="overlay-nav"><i
-                    class="fa-duotone fa-solid fa-arrow-left fa-beat-fade"></i></button>
+            <div class="prevPicWrap">
+                <button id="prev-photo" class="overlay-nav"><i
+                        class="fa-duotone fa-solid fa-arrow-left fa-beat-fade"></i></button>
+            </div>
             <img id="overlay-img" class="overlay-img" src="" alt="Overlay Image">
-            <button id="next-photo" class="overlay-nav"><i
-                    class="fa-duotone fa-solid fa-arrow-right fa-beat-fade"></i></button>
-            <button id="close-overlay" class="close-overlay">X</button>
-            <button id="delete-photo" class="delete-photo"><i class="fa-solid fa-trash"></i></button>
+            <div class="nextPicWrap">
+                <button id="next-photo" class="overlay-nav"><i
+                        class="fa-duotone fa-solid fa-arrow-right fa-beat-fade"></i></button>
+            </div>
+            <div class="closeOverlayWrapper">
+                <button id="close-overlay" class="close-overlay">X</button>
+            </div>
+
+            <div class="deletePhotoWrapper">
+                <button id="delete-photo" class="delete-photo"><i class="fa-solid fa-trash"></i></button>
+            </div>
+
         </div>
     </div>
 </body>

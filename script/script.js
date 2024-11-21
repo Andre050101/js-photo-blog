@@ -145,7 +145,9 @@ function deletePhoto() {
     if (photos.length === 0) {
       board.innerHTML = `
       <p class="noPicMsg">Nessuna foto disponibile.</p>
-      <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+      <div class = "addBtnWrapper">
+        <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+      </div>
       `;
       btnBase.style.display = 'none';
       deleteAllBtn.style.display = 'none';
@@ -214,7 +216,10 @@ function deleteAllPics() {
   photos = [];
   board.innerHTML = `
       <p class="noPicMsg">Nessuna foto disponibile.</p>
-      <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+      <div class = "addBtnWrapper">
+        <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+      </div>
+      
       `;
   btnBase.style.display = 'none';
   deleteAllBtn.style.display = 'none';

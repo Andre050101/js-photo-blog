@@ -10,6 +10,8 @@
     --close-pic-backg: #861c1c;
 }
 
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* Corpo del documento */
 html,
 body {
@@ -28,6 +30,7 @@ header {
     color: black;
 }
 
+/*Stile titolo*/
 header h1 {
     font-weight: 700;
     font-size: 3.5rem;
@@ -46,6 +49,8 @@ main {
     background-attachment: fixed;
 }
 
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* Griglia per le card */
 .board {
     display: grid;
@@ -60,15 +65,9 @@ main {
     position: relative;
 }
 
-.noPicMsg {
-    text-align: center;
-    font-size: 3rem;
-    font-weight: 700;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Card*/
 
 /* Stile delle card */
 .card {
@@ -125,6 +124,21 @@ main {
     color: #333;
 }
 
+/*Stile messaggio "No foto"*/
+.noPicMsg {
+    text-align: center;
+    font-size: 3rem;
+    font-weight: 700;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*Overlay*/
 /*Overlay che copre pagina intera*/
 .overlay {
     position: fixed;
@@ -157,18 +171,24 @@ main {
 }
 
 /* Bottone di chiusura */
-.close-overlay {
+.closeOverlayWrapper {
     position: absolute;
-    top: -20px;
-    right: -20px;
+    top: -0px;
+    right: -55px;
+}
+
+.close-overlay {
     background-color: white;
     border: none;
     border-radius: 50%;
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
-    width: 8%;
+    width: 3vw;
     aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    transition: tranform 0.3s ease;
+    transform-origin: center center;
 }
 
 .close-overlay:hover {
@@ -176,10 +196,21 @@ main {
     color: white;
 }
 
-.overlay-nav {
+.prevPicWrap {
     position: absolute;
     top: 50%;
+    left: 0%;
     transform: translateY(-50%);
+}
+
+.nextPicWrap {
+    position: absolute;
+    top: 50%;
+    right: -13%;
+    transform: translateY(-50%);
+}
+
+.overlay-nav {
     background-color: white;
     color: black;
     border: none;
@@ -188,6 +219,9 @@ main {
     cursor: pointer;
     z-index: 10000;
     border-radius: 10px;
+    transform: translate(-50%, -50%);
+    transition: tranform 0.3s ease;
+    transform-origin: center center;
 
 }
 
@@ -196,40 +230,20 @@ main {
     color: white;
 }
 
-/* Posizionamento pulsanti */
-#prev-photo {
-    left: -6%;
-}
-
-#next-photo {
-    right: -6%;
-}
-
-.delete-photo {
-    position: absolute;
-    bottom: 5px;
-    right: -20px;
-    background-color: white;
-    color: black;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    font-size: 20px;
-    cursor: pointer;
-    width: 8%;
-    aspect-ratio: 1;
-}
-
-.delete-photo:hover {
-    background-color: var(--close-pic-backg);
-    color: white;
-    ;
-}
-
-.addBtn {
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*Bottoni*/
+/*ADD BUTTONS(ADD BUTTON CON NESSUNA FOTO E CON ALMENO 1 FOTO)*/
+/*ADD BUTTON NO PHOTO*/
+/*Wrapper bottone aggiungi foto (Quando non ce nessuna foto)*/
+.addBtnWrapper {
     position: absolute;
     bottom: 10%;
     left: 50%;
+}
+
+/*Aggiungi bottone quando non ho foto*/
+.addBtn {
     padding: 15px 30px;
     border-style: none;
     border-radius: 10px;
@@ -237,27 +251,21 @@ main {
     color: white;
     font-size: 20px;
     font-weight: 700;
-    transform: translate(-50%, -50%);
     cursor: pointer;
+    transform: translate(-50%, -50%);
+    transition: tranform 0.3s ease;
+    transform-origin: center center;
 }
 
+/*Formattazione icona pic in pulsante aggiungi foto (Quando non ce nessuna foto)*/
 .addBtnImg {
     color: #919191;
     padding-left: 5px;
 }
 
-.addBtnWrapper {
-    position: absolute;
-    top: 17%;
-    left: 7%;
-}
 
-.deleteBtnWrapper {
-    position: absolute;
-    top: 26%;
-    left: 7%;
-}
-
+/*ADD BUTTON 1+ PHOTO*/
+/*Aggiungi bottone quando ho almeno 1 foto*/
 .addBtn2 {
     padding: 15px 30px;
     border-style: none;
@@ -268,8 +276,56 @@ main {
     font-weight: 700;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    transition: tranform 0.3 ease;
+    transition: tranform 0.3s ease;
     transform-origin: center center;
+}
+
+.addBtnWrapper2 {
+    position: absolute;
+    top: 18%;
+    left: 7%;
+}
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+
+/*DELETE BUTTONS: ('ONLY 1' AND 'ALL')*/
+/*ONLY 1 PIC*/
+.deletePhotoWrapper {
+    position: absolute;
+    bottom: -36px;
+    right: -57px;
+}
+
+.delete-photo {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 20px;
+    cursor: pointer;
+    width: 3vw;
+    aspect-ratio: 1;
+    transform: translate(-50%, -50%);
+    transition: transform 0.3s ease;
+    transform-origin: center center;
+}
+
+/*BUTTON DELETE(1 pic) HOVER*/
+.delete-photo:hover {
+    background-color: var(--close-pic-backg);
+    color: white;
+}
+
+
+/*ALL*/
+
+/*Wrapper delete-all*/
+.deleteBtnWrapper {
+    position: absolute;
+    top: 26%;
+    left: 7%;
 }
 
 .deleteAllBtn {
@@ -282,14 +338,20 @@ main {
     font-weight: 700;
     transform: translate(-50%, -50%);
     cursor: pointer;
-    transition: tranform 0.3 ease;
+    transition: tranform 0.3s ease;
     transform-origin: center center;
 }
 
 .deleteAllBtn:hover {
     background-color: rgb(190, 14, 14);
     color: white;
+
+    .addBtnImg {
+        color: black;
+    }
 }
+
+/*Hover comuni e transizione bottoni*/
 
 .addBtn:hover,
 .addBtn2:hover {
@@ -301,10 +363,18 @@ main {
     }
 }
 
-.addBtnWrapper:hover .addBtn2,
-.deleteBtnWrapper:hover .deleteAllBtn {
+.addBtnWrapper2:hover .addBtn2,
+.deleteBtnWrapper:hover .deleteAllBtn,
+.addBtnWrapper:hover .addBtn,
+.deletePhotoWrapper:hover .delete-photo,
+.closeOverlayWrapper:hover .close-overlay,
+.prevPicWrap:hover .overlay-nav,
+.nextPicWrap:hover .overlay-nav {
     transform: translate(-50%, -50%) scale(1.1);
 }
+
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /* Media queries per rendere la pagina responsive */
 @media screen and (max-width: 768px) {
