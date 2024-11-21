@@ -154,7 +154,10 @@ function deletePhoto() {
 
     //Se non ci sono foto, mostra messaggio:
     if (photos.length === 0) {
-      board.innerHTML = '<p class="noPicMsg">Nessuna foto disponibile.</p>';
+      board.innerHTML = `
+      <p class="noPicMsg">Nessuna foto disponibile.</p>
+      <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+      `;
     }
   }
 }
