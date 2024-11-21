@@ -158,6 +158,7 @@ function deletePhoto() {
       <p class="noPicMsg">Nessuna foto disponibile.</p>
       <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
       `;
+      btnBase.style.display = 'none';
     }
   }
 }
@@ -167,6 +168,76 @@ deletePicBtn.addEventListener('click', (e) => {
   e.stopPropagation();
   deletePhoto();
 });
+
+//Funzione per aggiungere una nuova foto
+function addPhoto(photo) {
+  //aggiunta foto in array
+  photos.push(photo);
+
+  //Aggiorna griglia
+  board.innerHTML = photos.map(createCard).join('');
+
+  //Aggiunge event listener a card aggiornate
+  const cards = document.querySelectorAll('.card');
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      currentPhotoIndex = index,
+        openOverlay(currentPhotoIndex);
+    });
+  });
+  const btnBase = document.getElementById('btnBase');
+  if (photos.length > 0) {
+    btnBase.style.display = 'block';
+  }
+}
+
+//funzione per colore esadecimale casuale
+function getRandomHexColor() {
+  return Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+}
+
+//funzione per titolo generato casualmente
+function getRandomLoremString() {
+  const words = [
+    "lorem", "ipsum", "dolor", "sit", "amet", "consectetur", "adipiscing",
+    "elit", "sed", "do", "eiusmod", "tempor", "incididunt", "ut", "labore",
+    "et", "dolore", "magna", "aliqua", "ut", "enim", "ad", "minim",
+    "veniam", "quis", "nostrud", "exercitation", "ullamco", "laboris",
+    "nisi", "ut", "aliquip", "ex", "ea", "commodo", "consequat"
+  ];
+
+  let randomWords = [];
+  for (let i = 0; i < 7; i++) {
+    const randomIndex = Math.floor(Math.random() * words.length);
+    randomWords.push(words[randomIndex]);
+  }
+
+  return randomWords.join(' ');
+}
+
+//funzione per gestire click su bottone carica foto
+function handleAddPicBtn() {
+  const color = getRandomHexColor();
+  const title = getRandomLoremString();
+  const newPhoto = {
+    url: 'https://via.placeholder.com/600/' + color,
+    title: title + (photos.length + 1),
+  };
+  addPhoto(newPhoto);
+}
+
+//Event listener per bottone dinamico
+document.addEventListener('click', (e) => {
+  if (e.target && e.target.matches('.addBtn')) {
+    handleAddPicBtn();
+  }
+});
+
+//Gestiamo funzionamento bottone aggiungi foto basico(aside)
+const btnBase = document.getElementById('btnBase');
+btnBase.addEventListener('click', (e) => {
+  handleAddPicBtn();
+})
 
 // Avvia il caricamento delle foto al caricamento della pagina
 loadPhotos();

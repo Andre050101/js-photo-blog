@@ -43,6 +43,7 @@ main {
     justify-content: center;
     align-items: flex-start;
     padding: 20px;
+    background-attachment: fixed;
 }
 
 /* Griglia per le card */
@@ -245,7 +246,23 @@ main {
     padding-left: 5px;
 }
 
-.addBtn:hover {
+.addBtn2 {
+    position: absolute;
+    top: 17%;
+    left: 7%;
+    padding: 15px 30px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.addBtn:hover,
+.addBtn2:hover {
     background-color: rgb(0, 204, 0);
     color: white;
 
