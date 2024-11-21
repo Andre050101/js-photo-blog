@@ -246,10 +246,19 @@ main {
     padding-left: 5px;
 }
 
-.addBtn2 {
+.addBtnWrapper {
     position: absolute;
     top: 17%;
     left: 7%;
+}
+
+.deleteBtnWrapper {
+    position: absolute;
+    top: 26%;
+    left: 7%;
+}
+
+.addBtn2 {
     padding: 15px 30px;
     border-style: none;
     border-radius: 10px;
@@ -259,6 +268,27 @@ main {
     font-weight: 700;
     transform: translate(-50%, -50%);
     cursor: pointer;
+    transition: tranform 0.3 ease;
+    transform-origin: center center;
+}
+
+.deleteAllBtn {
+    padding: 15px 18px;
+    border-style: none;
+    border-radius: 10px;
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    font-weight: 700;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+    transition: tranform 0.3 ease;
+    transform-origin: center center;
+}
+
+.deleteAllBtn:hover {
+    background-color: rgb(190, 14, 14);
+    color: white;
 }
 
 .addBtn:hover,
@@ -269,6 +299,11 @@ main {
     .addBtnImg {
         color: black;
     }
+}
+
+.addBtnWrapper:hover .addBtn2,
+.deleteBtnWrapper:hover .deleteAllBtn {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 /* Media queries per rendere la pagina responsive */

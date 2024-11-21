@@ -33,12 +33,31 @@ Spostandosi col mouse sopra le foto, queste si zoommano, ruotano di 10 gradi e l
 Aggiungere un loader al caricamento dei dati
 */
 
-// Selezione del contenitore principale
-const board = document.querySelector('.board');
+//COSTANTI
+const board = document.querySelector('.board'); // Selezione del contenitore principale
 
-// URL dell'API (carica solo 6 foto)
-const apiURL = 'https://jsonplaceholder.typicode.com/photos?_limit=6';
+const apiURL = 'https://jsonplaceholder.typicode.com/photos?_limit=6'; // URL dell'API (carica solo 6 foto)
 
+// Riferimenti agli elementi dell'overlay per visualizzare l'immagine ingrandita
+const overlay = document.getElementById('overlay'); // Contenitore dell'overlay (background scuro)
+const closeOverlayBtn = document.getElementById('close-overlay'); // Bottone per chiudere l'overlay
+const overlayImg = document.getElementById('overlay-img'); // Immagine visualizzata nell'overlay
+
+// Riferimenti ai pulsanti di navigazione tra le foto nell'overlay
+const prevButton = document.getElementById('prev-photo'); // Bottone per visualizzare la foto precedente
+const nextButton = document.getElementById('next-photo'); // Bottone per visualizzare la foto successiva
+
+// Riferimento al pulsante per eliminare la foto corrente dall'overlay
+const deletePicBtn = document.getElementById('delete-photo'); // Bottone per eliminare la foto corrente
+
+// Riferimento al pulsante per aggiungere una nuova foto
+const btnBase = document.getElementById('btnBase'); // Bottone per aggiungere una nuova foto alla griglia
+
+//VARIABILI
+let currentPhotoIndex = 0; // Indice della foto corrente che viene visualizzata nell'overlay
+let photos = []; // Array che conterrà tutte le foto caricate (inclusi i dati come URL e titolo)
+
+//FUNZIONI
 // Funzione per creare una singola card
 function createCard(photo) {
   return `
@@ -51,9 +70,6 @@ function createCard(photo) {
         </div>
     `;
 }
-
-let currentPhotoIndex = 0;
-let photos = [];
 
 // Funzione per caricare le foto dall'API
 async function loadPhotos() {
@@ -77,63 +93,33 @@ async function loadPhotos() {
     board.innerHTML = '<p>Errore durante il caricamento. Riprova più tardi.</p>';
   }
 }
-
-/* Gestione overlay: */
-const overlay = document.getElementById('overlay');
-const closeOverlayBtn = document.getElementById('close-overlay');
-const overlayImg = document.getElementById('overlay-img');
-
-// Pulsanti per la navigazione
-const prevButton = document.getElementById('prev-photo');
-const nextButton = document.getElementById('next-photo');
-
-// Funzione per mostrare l'overlay con la foto corrente
+//Apertura e chiusura Overlay
+//Apertura
 function openOverlay(index) {
   const photo = photos[index];
   overlay.style.display = 'flex';
   overlayImg.src = photo.url;
 }
 
-// Funzione per chiudere l'overlay
+//Chiusura
 function closeOverlay() {
   overlay.style.display = 'none';
 }
 
 // Navigazione tra le foto
+//Foto successiva
 function showNextPhoto() {
   currentPhotoIndex = (currentPhotoIndex + 1) % photos.length; // Vai alla foto successiva
   openOverlay(currentPhotoIndex);
 }
-
+//Foto precedente
 function showPrevPhoto() {
   currentPhotoIndex =
     (currentPhotoIndex - 1 + photos.length) % photos.length; // Vai alla foto precedente
   openOverlay(currentPhotoIndex);
 }
 
-// Event listener per chiudere l'overlay
-closeOverlayBtn.addEventListener('click', closeOverlay);
-
-// Event listener per navigazione
-prevButton.addEventListener('click', (e) => {
-  e.stopPropagation(); // Evita che il click chiuda l'overlay
-  showPrevPhoto();
-});
-
-nextButton.addEventListener('click', (e) => {
-  e.stopPropagation(); // Evita che il click chiuda l'overlay
-  showNextPhoto();
-});
-
-// Event listener per chiudere l'overlay cliccando fuori dall'immagine
-overlay.addEventListener('click', closeOverlay);
-
-// Evita che il click sull'immagine non chiuda l'overlay
-overlayImg.addEventListener('click', (e) => e.stopPropagation());
-
-//Gestione eliminazione foto
-const deletePicBtn = document.getElementById('delete-photo');
-
+//Funzione per eliminazione foto
 function deletePhoto() {
   if (photos.length > 0) {
     //Elimino foto da array
@@ -162,14 +148,7 @@ function deletePhoto() {
     }
   }
 }
-
-//Event listener per bottone eliminazione
-deletePicBtn.addEventListener('click', (e) => {
-  e.stopPropagation();
-  deletePhoto();
-});
-
-//Funzione per aggiungere una nuova foto
+//Funzione per aggiungere foto
 function addPhoto(photo) {
   //aggiunta foto in array
   photos.push(photo);
@@ -226,6 +205,34 @@ function handleAddPicBtn() {
   addPhoto(newPhoto);
 }
 
+//EVENT LISTENER
+// Event listener per chiudere l'overlay
+closeOverlayBtn.addEventListener('click', closeOverlay);
+
+// Event listener per navigazione
+//Bottone precedente
+prevButton.addEventListener('click', (e) => {
+  e.stopPropagation(); // Evita che il click chiuda l'overlay
+  showPrevPhoto();
+});
+//Bottone successivo
+nextButton.addEventListener('click', (e) => {
+  e.stopPropagation(); // Evita che il click chiuda l'overlay
+  showNextPhoto();
+});
+
+// Event listener per chiudere l'overlay cliccando fuori dall'immagine
+overlay.addEventListener('click', closeOverlay);
+
+// Evita che il click sull'immagine non chiuda l'overlay
+overlayImg.addEventListener('click', (e) => e.stopPropagation());
+
+//Event listener per bottone eliminazione
+deletePicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  deletePhoto();
+});
+
 //Event listener per bottone dinamico
 document.addEventListener('click', (e) => {
   if (e.target && e.target.matches('.addBtn')) {
@@ -234,7 +241,6 @@ document.addEventListener('click', (e) => {
 });
 
 //Gestiamo funzionamento bottone aggiungi foto basico(aside)
-const btnBase = document.getElementById('btnBase');
 btnBase.addEventListener('click', (e) => {
   handleAddPicBtn();
 })
