@@ -131,5 +131,39 @@ overlay.addEventListener('click', closeOverlay);
 // Evita che il click sull'immagine non chiuda l'overlay
 overlayImg.addEventListener('click', (e) => e.stopPropagation());
 
+//Gestione eliminazione foto
+const deletePicBtn = document.getElementById('delete-photo');
+
+function deletePhoto() {
+  if (photos.length > 0) {
+    //Elimino foto da array
+    photos.splice(currentPhotoIndex, 1);
+
+    //Aggiorno griglia sulla board
+    board.innerHTML = photos.map(createCard).join('');
+
+    //Riaggiungo event listener alle card
+    const cards = document.querySelectorAll('.card');
+    cards.forEach((card, index) => {
+      card.addEventListener('click', () => {
+        currentPhotoIndex = index;
+        openOverlay(currentPhotoIndex);
+      });
+    });
+    closeOverlay();
+
+    //Se non ci sono foto, mostra messaggio:
+    if (photos.length === 0) {
+      board.innerHTML = '<p class="noPicMsg">Nessuna foto disponibile.</p>';
+    }
+  }
+}
+
+//Event listener per bottone eliminazione
+deletePicBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  deletePhoto();
+});
+
 // Avvia il caricamento delle foto al caricamento della pagina
 loadPhotos();
