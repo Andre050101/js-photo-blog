@@ -53,6 +53,9 @@ const deletePicBtn = document.getElementById('delete-photo'); // Bottone per eli
 // Riferimento al pulsante per aggiungere una nuova foto
 const btnBase = document.getElementById('btnBase'); // Bottone per aggiungere una nuova foto alla griglia
 
+// Riferimento al pulsante per eliminare tutte le foto
+const deleteAllBtn = document.getElementById('deleteAllBtn');
+
 //VARIABILI
 let currentPhotoIndex = 0; // Indice della foto corrente che viene visualizzata nell'overlay
 let photos = []; // Array che conterrà tutte le foto caricate (inclusi i dati come URL e titolo)
@@ -145,6 +148,7 @@ function deletePhoto() {
       <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
       `;
       btnBase.style.display = 'none';
+      deleteAllBtn.style.display = 'none';
     }
   }
 }
@@ -164,10 +168,10 @@ function addPhoto(photo) {
         openOverlay(currentPhotoIndex);
     });
   });
-  const btnBase = document.getElementById('btnBase');
   if (photos.length > 0) {
-    btnBase.style.display = 'block';
+    deleteAllBtn.style.display = 'block';
   }
+  btnBase.style.display = 'block';
 }
 
 //funzione per colore esadecimale casuale
@@ -203,6 +207,17 @@ function handleAddPicBtn() {
     title: title + (photos.length + 1),
   };
   addPhoto(newPhoto);
+}
+
+//funzione per eliminare tutte le foto 
+function deleteAllPics() {
+  photos = [];
+  board.innerHTML = `
+      <p class="noPicMsg">Nessuna foto disponibile.</p>
+      <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+      `;
+  btnBase.style.display = 'none';
+  deleteAllBtn.style.display = 'none';
 }
 
 //EVENT LISTENER
@@ -243,6 +258,11 @@ document.addEventListener('click', (e) => {
 //Gestiamo funzionamento bottone aggiungi foto basico(aside)
 btnBase.addEventListener('click', (e) => {
   handleAddPicBtn();
+})
+
+//Event listener per pulsante elimina tutto
+deleteAllBtn.addEventListener('click', (e) => {
+  deleteAllPics();
 })
 
 // Avvia il caricamento delle foto al caricamento della pagina
