@@ -49,6 +49,10 @@ main {
     background-attachment: fixed;
 }
 
+aside {
+    position: relative;
+}
+
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /* Griglia per le card */
@@ -133,6 +137,7 @@ main {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    padding-bottom: 150px;
 }
 
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
@@ -184,8 +189,8 @@ main {
     padding: 10px;
     font-size: 20px;
     cursor: pointer;
-    width: 3vw;
-    aspect-ratio: 1;
+    width: 55px;
+    aspect-ratio: 1 / 1;
     transform: translate(-50%, -50%);
     transition: tranform 0.3s ease;
     transform-origin: center center;
@@ -218,6 +223,7 @@ main {
     padding: 20px 30px;
     cursor: pointer;
     z-index: 10000;
+    width: 90px;
     border-radius: 10px;
     transform: translate(-50%, -50%);
     transition: tranform 0.3s ease;
@@ -281,7 +287,7 @@ main {
 }
 
 .addBtnWrapper2 {
-    position: absolute;
+    position: fixed;
     top: 18%;
     left: 7%;
 }
@@ -305,8 +311,8 @@ main {
     padding: 15px;
     font-size: 20px;
     cursor: pointer;
-    width: 3vw;
-    aspect-ratio: 1;
+    width: 55px;
+    aspect-ratio: 1 / 1;
     transform: translate(-50%, -50%);
     transition: transform 0.3s ease;
     transform-origin: center center;
@@ -323,7 +329,7 @@ main {
 
 /*Wrapper delete-all*/
 .deleteBtnWrapper {
-    position: absolute;
+    position: fixed;
     top: 26%;
     left: 7%;
 }
@@ -373,10 +379,52 @@ main {
     transform: translate(-50%, -50%) scale(1.1);
 }
 
+/*Altro*/
+.textBtn {
+    display: inline-block;
+}
+
+.noPics {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 
 /* Media queries per rendere la pagina responsive */
+@media screen and (max-width: 1650px) {
+    .textBtn {
+        display: none;
+    }
+
+    .addBtnImg {
+        padding: 0;
+    }
+
+    .addBtn2,
+    .deleteAllBtn {
+        padding: 14px;
+    }
+
+
+}
+
+@media screen and (max-width: 1485px) {
+    .addBtnWrapper2 {
+        padding-left: 5px;
+        top: 5%;
+        left: 6%;
+    }
+
+    .deleteBtnWrapper {
+        padding-right: 5px;
+        top: 5%;
+        left: 93%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .board {
         grid-template-columns: repeat(2, 1fr);
@@ -389,15 +437,42 @@ main {
     }
 }
 
+@media screen and (max-width: 695px) {
+    .overlay-nav {
+        width: 40px;
+        padding: 0px;
+    }
+
+    .nextPicWrap {
+        right: -3%;
+    }
+
+    .prevPicWrap {
+        left: 4%;
+    }
+
+}
+
 @media screen and (max-width: 576px) {
     .board {
         grid-template-columns: 1fr;
         /* 1 colonna per schermi molto piccoli */
         gap: 10px;
     }
+}
 
-    .close-overlay {
-        font-size: 12px;
-        width: 6%;
+@media screen and (max-width: 500px) {
+    .nextPicWrap {
+        right: -4%;
+    }
+
+    .prevPicWrap {
+        left: 3%;
+    }
+}
+
+@media screen and (max-width: 408px) {
+    .addBtnWrapper {
+        bottom: 0%;
     }
 }

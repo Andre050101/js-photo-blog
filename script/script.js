@@ -146,7 +146,9 @@ function deletePhoto() {
       board.innerHTML = `
       <p class="noPicMsg">Nessuna foto disponibile.</p>
       <div class = "addBtnWrapper">
-        <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+        <button class="addBtn">
+        <span class="textBtn">Carica foto</span>
+        <i class="fa-solid fa-image addBtnImg"></i></button>
       </div>
       `;
       btnBase.style.display = 'none';
@@ -217,9 +219,10 @@ function deleteAllPics() {
   board.innerHTML = `
       <p class="noPicMsg">Nessuna foto disponibile.</p>
       <div class = "addBtnWrapper">
-        <button class="addBtn">Carica foto<i class="fa-solid fa-image addBtnImg"></i></button>
+        <button class="addBtn">
+        <span class="textBtn">Carica foto</span>
+        <i class="fa-solid fa-image addBtnImg"></i></button>
       </div>
-      
       `;
   btnBase.style.display = 'none';
   deleteAllBtn.style.display = 'none';
