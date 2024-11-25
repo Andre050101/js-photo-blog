@@ -77,12 +77,14 @@ function createCard(photo) {
 // Funzione per caricare le foto dall'API
 async function loadPhotos() {
   try {
-    // Effettua una richiesta GET
+    // Effettua una richiesta GET bloccando esecuzione finche l'esecuzione della promise non è terminata (metodo async/await)
     const response = await axios.get(apiURL);
-    photos = response.data; // Memorizza le foto per la navigazione
+    // Memorizza le foto per la navigazione
+    photos = response.data;
 
     // Genera il markup delle card
     board.innerHTML = photos.map(createCard).join('');
+    //Gestione apertura card al click
     const cards = document.querySelectorAll('.card');
     cards.forEach((card, index) => {
       card.addEventListener('click', () => {
@@ -205,11 +207,14 @@ function getRandomLoremString() {
 //funzione per gestire click su bottone carica foto
 function handleAddPicBtn() {
   const color = getRandomHexColor();
+  console.log(color);
   const title = getRandomLoremString();
+  console.log(title);
   const newPhoto = {
     url: 'https://via.placeholder.com/600/' + color,
     title: title + (photos.length + 1),
   };
+  console.log(title);
   addPhoto(newPhoto);
 }
 
